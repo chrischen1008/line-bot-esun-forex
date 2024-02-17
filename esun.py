@@ -36,7 +36,7 @@ def find_one(enter_value): #找出user輸入的外幣買進&賣出價格
         soup_search='墨西哥披索(MXN)'    
 
     td_tag = soup.find('td', string=soup_search)
-
+    return_msg=''
     if td_tag:
         # 获取对应的<tr>标签
         tr_tag = td_tag.parent
@@ -46,9 +46,11 @@ def find_one(enter_value): #找出user輸入的外幣買進&賣出價格
         # 提取两个<td align="right">标签的内容
         data = [td.text.strip() for td in align_right_td_tags]
         # print("两个数据分别为:", data)
-        print(f"{soup_search}價格為，賣出:{data[0]}、買入:{data[1]}")
+        return_msg=f"{soup_search}價格\n買入:{data[0]}\n賣出:{data[1]}"
+        print(return_msg)
+        return return_msg
     else:
-        print("未找到对应的货币名称。")
-    return f"{soup_search}價格為，賣出:{data[0]}、買入:{data[1]}"
+        print("輸入值不存在")
+        return return_msg
 
 find_one('美元')
