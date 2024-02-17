@@ -19,6 +19,7 @@ from linebot.v3.webhooks import (
     TextMessageContent
 )
 
+import esun as esun
 app = Flask(__name__)
 
 configuration = Configuration(access_token=config('CHANNEL_ACCESS_TOKEN'))
@@ -48,10 +49,18 @@ def callback():
 def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
+        
+        # line_bot_api.reply_message_with_http_info(
+        #     ReplyMessageRequest(
+        #         reply_token=event.reply_token,
+        #         messages=[TextMessage(text=event.message.text)]
+        #     )
+        # )
+
         line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[TextMessage(text=event.message.text)]
+                messages=[TextMessage(text=esun.find_one(event.message.text))]
             )
         )
 
