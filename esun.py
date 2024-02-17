@@ -14,25 +14,25 @@ def find_one(enter_value): #找出user輸入的外幣買進&賣出價格
     result2=soup.find_all('td', attrs={'scope': 'row'})
     print(result2)
     
-    if enter_value in '澳':
-        soup_search='澳幣(AUD)'
-    if enter_value in '紐':
-        soup_search='紐西蘭幣(NZD)'
-    if enter_value in '美':
-        soup_search='美元(USD)'
-    if enter_value in '歐':
-        soup_search='歐元(EUR)'
-    if enter_value in '瑞':
-        soup_search='瑞士法郎(CHF)'
-    if enter_value in '英':
-        soup_search='英鎊(GBP)'
-    if enter_value in '日':
-        soup_search='日圓(JPY)'
-    if enter_value in '南':
-        soup_search='南非幣(ZAR)'
-    if enter_value in '新':
-        soup_search='新加坡幣(SGD)'
-    if enter_value in '墨' or enter_value in '披':
+    if '澳' in enter_value:
+        soup_search = '澳幣(AUD)'
+    if '紐' in enter_value:
+        soup_search = '紐西蘭幣(NZD)'
+    if '美' in enter_value:
+        soup_search = '美元(USD)'
+    if '歐' in enter_value:
+        soup_search = '歐元(EUR)'
+    if '瑞' in enter_value:
+        soup_search = '瑞士法郎(CHF)'
+    if '英' in enter_value:
+        soup_search = '英鎊(GBP)'
+    if '日' in enter_value:
+        soup_search = '日圓(JPY)'
+    if '南' in enter_value:
+        soup_search = '南非幣(ZAR)'
+    if '新' in enter_value:
+        soup_search = '新加坡幣(SGD)'
+    if '墨' in enter_value or '披' in enter_value:
         soup_search='墨西哥披索(MXN)'    
 
     td_tag = soup.find('td', string=soup_search)
@@ -51,4 +51,4 @@ def find_one(enter_value): #找出user輸入的外幣買進&賣出價格
         print("未找到对应的货币名称。")
     return f"{soup_search}價格為，賣出:{data[0]}、買入:{data[1]}"
 
-find_one('日')
+find_one('美元')
