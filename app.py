@@ -63,6 +63,10 @@ def handle_message(event):
                 messages=[TextMessage(text=esun.find_one(event.message.text))]
             )
         )
+@app.route("/test")
+def hello():
+    return esun.find_one('美')
+            
 
 if __name__ == "__main__":
     app.run()

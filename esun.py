@@ -53,4 +53,4 @@ def find_one(enter_value): #找出user輸入的外幣買進&賣出價格
         print("輸入值不存在")
         return return_msg
 
-find_one('美元')
+find_one('美')
