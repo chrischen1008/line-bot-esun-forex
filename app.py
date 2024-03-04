@@ -63,10 +63,21 @@ def handle_message(event):
                 messages=[TextMessage(text=esun.find_one(event.message.text))]
             )
         )
-@app.route("/test")
-def hello():
+@app.route("/test/us")
+def us():
     return esun.find_one('美')
             
+@app.route("/test/eu")
+def eu():
+    return esun.find_one('歐')
+
+@app.route("/test/chf")
+def chf():
+    return esun.find_one('瑞')
+
+@app.route("/test/aud")
+def aud():
+    return esun.find_one('澳')
 
 if __name__ == "__main__":
     app.run()
